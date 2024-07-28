@@ -22,8 +22,17 @@ txtbox_prompt = QLineEdit()
 btn_generate = QPushButton("Generate")
 txt_imageHolder = QLabel("Upload Image...")
 btn_image = QPushButton("Select Image")
-txt_response = QLabel("1. Upload an Image\n2. Enter a prompt\n 3. Click 'Generate' to see results")
+txt_response = QLabel("1. Upload an Image\n2. Enter a prompt\n3. Click 'Generate' to see results")
 scroll_response = QScrollArea()
+
+# Create a container widget for centering
+container = QWidget()
+container_layout = QVBoxLayout(container)
+container_layout.addWidget(txt_response, alignment=Qt.AlignCenter)
+container_layout.addStretch(1)  # Add stretch to push content to the center
+
+# Set the container as the widget for the scroll area
+scroll_response.setWidget(container)
 
 # App Layout
 main_layout = QVBoxLayout()
@@ -42,7 +51,6 @@ widget.setLayout(main_layout)
 
 # App Design
 txt_response.setWordWrap(True)
-scroll_response.setWidget(txt_response)
 scroll_response.setWidgetResizable(True)
 
 col_one_row_one.addWidget(txtbox_prompt, alignment=Qt.AlignCenter)
@@ -61,7 +69,7 @@ buttonStyles = (
         "background-color: grey ;" +
         "color: white; }" +
         "*:hover { background-color: white; color: black }")
-txt_response.setStyleSheet("font: 20px black; display: flex; text-align: center;")
+txt_response.setStyleSheet("font: 14px black; display: flex; background-color: transparent;")
 txtbox_prompt.setStyleSheet("height: 30px; width: 300px")
 btn_generate.setStyleSheet(buttonStyles)
 btn_image.setStyleSheet(buttonStyles)
